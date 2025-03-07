@@ -55,30 +55,32 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && !empty($_GET)) {
       </div>
     </div>
   </nav>
-  <div class="pt-5 pb-5">
-    <h1 class="display-4 text-center mt-5">Knihy pro všechny</h1>
+
+  <!--headlines-->
+  <div class="container-fluid container-form pt-5">
+    <h1 class="display-2 text-center mt-5 mb-2">Knihy pro všechny</h1>
     <h2 class="display-6 text-center">Vítejte na stránkách největší knižní databáze</h5>
   </div>
 
-  <!--formulář-->
-  <div class="container container-form mt-5 mb-5">
+  <!--form-->
+  <div class="container container-form mt-1 mb-5">
     <h1 class="display-6 mt-4 mb-3">Vyhledat knihu</h1>
     <form action="search.php" method="GET">
       <div class="row">
         <div class="col-12 col-md-6 col-lg-3">
-          <label class="form-label" for="book_name">Název knihy</label>
+          <label class="form-label lead" for="book_name">Název knihy</label>
           <input class="form-control" type="text" name="book_name" value="<?= htmlspecialchars($_GET['book_name'] ?? '') ?>">
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-          <label class="form-label" for="first_name">Jméno autor</label>
+          <label class="form-label lead" for="first_name">Jméno autor</label>
           <input class="form-control" type="text" name="first_name" value="<?= htmlspecialchars($_GET['first_name'] ?? '') ?>">
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-          <label class="form-label" for="second_name">Příjmení autor</label>
+          <label class="form-label lead" for="second_name">Příjmení autor</label>
           <input class="form-control" type="text" name="second_name" value="<?= htmlspecialchars($_GET['second_name'] ?? '') ?>">
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-          <label class="form-label" for="ISBN">ISBN</label>
+          <label class="form-label lead" for="ISBN">ISBN</label>
           <input class="form-control" type="text" name="ISBN" value="<?= htmlspecialchars($_GET['ISBN'] ?? '') ?>">
         </div>
       </div>
@@ -87,42 +89,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && !empty($_GET)) {
       </div>
     </form>
   </div>
-
-  <!--vypis-->
-  <?php if (!empty($_GET) && !empty(array_filter($_GET))): ?>
-    <div class="container mt-5 mb-5">
-      <table class="table ">
-        <thead>
-          <tr>
-            <th>Název knihy</th>
-            <th>Obálka knihy</th>
-            <th>Autor</th>
-            <th>Popis knihy</th>
-            <th>ISBN</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php if (!empty($filteredBooks)): ?>
-            <?php foreach ($filteredBooks as $book): ?>
-              <tr>
-                <td><?= htmlspecialchars($book['book_name']) ?></td>
-                <td class="col-2"> <img src="<?php echo htmlspecialchars($book["book_picture"]); ?>" alt="" height="150px"> </td>
-                <!-- <td><?= htmlspecialchars($book['first_name']) ?></td>
-                  <td><?= htmlspecialchars($book['second_name']) ?></td> -->
-                <td><?= htmlspecialchars($book['first_name']) ?> <?= htmlspecialchars($book['second_name']) ?></td>
-                <td><?= htmlspecialchars($book['description']) ?></td>
-                <td><?= htmlspecialchars($book['ISBN']) ?></td>
-              </tr>
-            <?php endforeach; ?>
-          <?php else: ?>
-            <tr>
-              <td colspan="4">Žádné knihy nenalezeny.</td>
-            </tr>
-          <?php endif; ?>
-        </tbody>
-      </table>
-    </div>
-  <?php endif; ?>
 
   <!--JavaScript Bootstrap-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

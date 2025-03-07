@@ -1,8 +1,8 @@
 body {
   min-height: 100vh;
-  background-image: url("images/bg-search.png");
+  background-image: url("images/bg-index.png");
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position: left top;
   background-size: cover;
 }
 
@@ -10,12 +10,12 @@ nav {
   background-color: #daa972;
 }
 
-/* .container-form {
-  background-color: rgba(248, 247, 244, 0.9);
+.container-form {
+  background-color: rgba(255, 255, 255, 0.9);
   padding-top: 15px;
   padding-bottom: 30px;
   padding-inline: 30px;
-} */
+}
 
 .btn {
   background-color: #bbbda5;

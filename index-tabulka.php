@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && !empty($_GET)) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--Bootstrap-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="search.css">
+  <link rel="stylesheet" href="index.css">
   <title>Knižní databáze</title>
 </head>
 
@@ -56,25 +56,31 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && !empty($_GET)) {
     </div>
   </nav>
 
+  <!--headlines-->
+  <div class="container-fluid container-form pt-5 pb-5">
+    <h1 class="display-4 text-center mt-5">Knihy pro všechny</h1>
+    <h2 class="display-6 text-center">Vítejte na stránkách největší knižní databáze</h5>
+  </div>
+
   <!--form-->
   <div class="container container-form mt-5 mb-5">
     <h1 class="display-6 mt-4 mb-3">Vyhledat knihu</h1>
     <form action="search.php" method="GET">
       <div class="row">
         <div class="col-12 col-md-6 col-lg-3">
-          <label class="form-label lead" for="book_name">Název knihy</label>
+          <label class="form-label" for="book_name">Název knihy</label>
           <input class="form-control" type="text" name="book_name" value="<?= htmlspecialchars($_GET['book_name'] ?? '') ?>">
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-          <label class="form-label lead" for="first_name">Jméno autor</label>
+          <label class="form-label" for="first_name">Jméno autor</label>
           <input class="form-control" type="text" name="first_name" value="<?= htmlspecialchars($_GET['first_name'] ?? '') ?>">
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-          <label class="form-label lead" for="second_name">Příjmení autor</label>
+          <label class="form-label" for="second_name">Příjmení autor</label>
           <input class="form-control" type="text" name="second_name" value="<?= htmlspecialchars($_GET['second_name'] ?? '') ?>">
         </div>
         <div class="col-12 col-md-6 col-lg-3">
-          <label class="form-label lead" for="ISBN">ISBN</label>
+          <label class="form-label" for="ISBN">ISBN</label>
           <input class="form-control" type="text" name="ISBN" value="<?= htmlspecialchars($_GET['ISBN'] ?? '') ?>">
         </div>
       </div>
@@ -87,27 +93,32 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && !empty($_GET)) {
   <!--book list-->
   <?php if (!empty($_GET) && !empty(array_filter($_GET))): ?>
     <div class="container container-search mt-5 mb-5">
-      <?php if (!empty($filteredBooks)): ?>
-        <?php foreach ($filteredBooks as $book) : ?>
-          <div class="card mb-3">
-            <div class="row g-3">
-              <div class="col-auto">
-                <img src="<?php echo htmlspecialchars($book["book_picture"]); ?>" class="card-img-top" alt="..." style="max-width: 200px;">
-              </div>
-              <div class="col-md-8 ps-2">
-                <div class="card-body">
-                  <h4 class="card-title"><?php echo htmlspecialchars($book['book_name']); ?></h4>
-                  <h6 class="card-title"><?= htmlspecialchars($book['first_name']) ?> <?= htmlspecialchars($book['second_name']) ?></h6>
-                  <p class="card-text"><?= htmlspecialchars($book['description']) ?></p>
-                  <p class="card-text"><small class="text-body-secondary">ISBN <?= htmlspecialchars($book['ISBN']) ?></small></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        <?php endforeach ?>
-      <?php else: ?>
-        <p>Žádné knihy nenalezeny.</p>
-      <?php endif; ?>
+      <table class="table">
+        <thead>
+          <th class="lead">Název knihy</th>
+          <th class="lead">Obálka </th>
+          <th class="lead">Autor</th>
+          <th class="lead">Popis knihy</th>
+          <th class="lead" colspan="2">ISBN</th>
+        </thead>
+        <tbody>
+          <?php if (!empty($filteredBooks)): ?>
+            <?php foreach ($filteredBooks as $book): ?>
+              <tr>
+                <td class="col-2"><?= htmlspecialchars($book['book_name']) ?></td>
+                <td class="col-auto"> <img src="<?php echo htmlspecialchars($book["book_picture"]); ?>" alt="" height="150px"> </td>
+                <td class="col-2"><?= htmlspecialchars($book['first_name']) ?> <?= htmlspecialchars($book['second_name']) ?></td>
+                <td class="col-6"><?= htmlspecialchars($book['description']) ?></td>
+                <td class="col-2"><?= htmlspecialchars($book['ISBN']) ?></td>
+              </tr>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <tr>
+              <td colspan="4">Žádné knihy nenalezeny.</td>
+            </tr>
+          <?php endif; ?>
+        </tbody>
+      </table>
     </div>
   <?php endif; ?>
 

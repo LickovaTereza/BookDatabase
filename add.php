@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
   <!--add form-->
   <div class="container container-form mt-5 mb-5">
-    <h1 class="display-6 mb-4">Nová kniha do databáze</h1>
+    <h1 class="display-6 mb-4">Přidat knihu do databáze</h1>
     <form action="add.php" method="post">
       <div class="mb-2">
         <label class="form-label" for="book_name">Název knihy</label>
@@ -83,15 +83,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       </div>
       <div class="mb-2">
         <label class="form-label" for="book_picture">Přebal knihy</label>
-        <input class="form-control" type="text" name="book_picture" id="book_picture" value="" placeholder="přidejte url adresu obrázku přebalu vámi vytvoření knihy" required>
+        <input class="form-control" type="text" name="book_picture" id="book_picture" value="" placeholder="přidejte url adresu obrázku přebalu vámi vytvořené knihy" required>
       </div>
       <div class="row mt-4">
         <button type="submit" class="btn">Přidat knihu</button>
       </div>
-
-
     </form>
   </div>
+
   <!--JavaScript Bootstrap-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

@@ -42,35 +42,34 @@ $books = $repo->getAllBooks();
     </div>
   </nav>
 
-  <!--book cards-->
+  <!--book list-->
   <div class="container mt-5 mb-5">
-    <div class="mt-4 mb-5">
-      <h1 class="display-6 ">Seznam knih</h1>
-      <p class="lead">Prohlédněte si aktuálně dostupné knihy v naši databázi.</p>
-    </div>
-    <?php foreach ($books as $book) : ?>
-      <div class="card mb-3">
-        <div class="row g-3">
-          <div class="col-auto">
-            <img src="<?php echo htmlspecialchars($book->book_picture); ?>" class="card-img-top" alt="..." style="max-width: 200px;">
-          </div>
-          <div class="col-md-8 ps-2">
-            <div class="card-body">
-              <h4 class="card-title"><?php echo htmlspecialchars($book->book_name); ?></h4>
-              <h6 class="card-title"><?php echo htmlspecialchars($book->first_name); ?> <?php echo htmlspecialchars($book->second_name); ?></h6>
-              <p class="card-text"><?php echo htmlspecialchars($book->description); ?></p>
-              <p class="card-text"><small class="text-body-secondary">ISBN <?php echo htmlspecialchars($book->ISBN); ?></small></p>
-            </div>
-          </div>
-          <div class="col-auto">
-            <div class="card-body">
-              <a href="delete.php?id=<?php echo $book->id; ?>" onclick="return confirm('Opravdu chcete smazat?')" class="btn btn-sm">odstranit knihu</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    <?php endforeach ?>
+    <h1 class="display-6 mt-4 mb-3">Seznam knih</h1>
+    <table class="table">
+      <thead>
+        <th class="lead">Název knihy</th>
+        <th class="lead">Obálka </th>
+        <th class="lead">Autor</th>
+        <th class="lead">Popis knihy</th>
+        <th class="lead" colspan="2">ISBN</th>
+      </thead>
+      <tbody>
+        <?php foreach ($books as $book) : ?>
+          <tr>
+            <td class="col-2 "><?php echo htmlspecialchars($book->book_name); ?></td>
+            <td class="col-auto"> <img src="<?php echo htmlspecialchars($book->book_picture); ?>" alt="" height="150px"> </td>
+            <td class="col-2"><?php echo htmlspecialchars($book->first_name); ?> <?php echo htmlspecialchars($book->second_name); ?></td>
+            <td class="col-6"><?php echo htmlspecialchars($book->description); ?></td>
+            <td class="col-2"><?php echo htmlspecialchars($book->ISBN); ?></td>
+            <td class="col-auto">
+              <a href="delete.php?id=<?php echo $book->id; ?>" onclick="return confirm('Opravdu chcete smazat?')" class="btn btn-sm">odstranit</a>
+            </td>
+          </tr>
+        <?php endforeach ?>
+      </tbody>
+    </table>
   </div>
+
 
   <!--JavaScript Bootstrap-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
