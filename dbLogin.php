@@ -2,9 +2,9 @@
 
 // return [
 //   "host" => "localhost",
-//   "dbname" => "tereza1741246411",
-//   "username" => "tereza1741246411",
-//   "password" => "heslo1741"
+//   "dbname" => "",
+//   "username" => "",
+//   "password" => ""
 // ];
 
 return [
