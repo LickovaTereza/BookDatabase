@@ -55,10 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && !empty($_GET)) {
       </div>
     </div>
   </nav>
-  <div class="pt-5 pb-5">
-    <h1 class="display-4 text-center mt-5">Knihy pro všechny</h1>
-    <h2 class="display-6 text-center">Vítejte na stránkách největší knižní databáze</h5>
-  </div>
 
   <!--formulář-->
   <div class="container container-form mt-5 mb-5">
@@ -90,8 +86,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET" && !empty($_GET)) {
 
   <!--vypis-->
   <?php if (!empty($_GET) && !empty(array_filter($_GET))): ?>
-    <div class="container mt-5 mb-5">
-      <table class="table ">
+    <div class="container container-search mt-5 mb-5">
+      <table class="table">
         <thead>
           <tr>
             <th>Název knihy</th>

@@ -50,9 +50,9 @@ class BookRepository {
       $sql .= " AND second_name LIKE :second_name";
       $params['second_name'] = "%" . $filters['second_name'] . "%";
     }
-    if (!empty($filters['isbn'])) {
-      $sql .= " AND isbn = :isbn";
-      $params['isbn'] = $filters['isbn'];
+    if (!empty($filters['ISBN'])) {
+      $sql .= " AND ISBN LIKE :ISBN";
+      $params['ISBN'] = "%" . $filters['ISBN'] . "%";
     }
 
     $stmt = $this->pdo->prepare($sql);

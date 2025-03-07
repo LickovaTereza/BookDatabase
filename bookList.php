@@ -14,12 +14,13 @@ $books = $repo->getAllBooks();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--Bootstrap-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="bookList.css">
   <title>Seznam knih</title>
 </head>
 
 <body>
   <!--navbar-->
-  <nav class="navbar navbar-expand-lg bg-primary " data-bs-theme="dark">
+  <nav class="navbar navbar-expand-lg" data-bs-theme="light">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.php">Knižní databáze</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +29,7 @@ $books = $repo->getAllBooks();
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.php">Vyhledat knihu</a>
+            <a class="nav-link" href="search.php">Vyhledat knihu</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="bookList.php">Seznam dostupných knih</a>
@@ -42,18 +43,15 @@ $books = $repo->getAllBooks();
   </nav>
 
   <!--book list-->
-  <div class="container">
-    <h1 class="display-5 mt-4 mb-3">Seznam knih</h1>
+  <div class="container mt-5 mb-5">
+    <h1 class="display-6 mt-4 mb-3">Seznam knih</h1>
     <table class="table">
       <thead>
         <th>Název knihy</th>
         <th>Obálka knihy</th>
         <th>Autor</th>
-        <!-- <th>Jméno autora</th> -->
-        <!-- <th>Příjmení autora</th> -->
         <th>Popis knihy</th>
-        <th>ISBN</th>
-        <th>odstranit</th>
+        <th colspan="2">ISBN</th>
       </thead>
       <tbody>
         <?php foreach ($books as $book) : ?>
@@ -66,7 +64,7 @@ $books = $repo->getAllBooks();
             <td class="col-6"><?php echo htmlspecialchars($book->description); ?></td>
             <td class="col-auto"><?php echo htmlspecialchars($book->ISBN); ?></td>
             <td class="col-2">
-              <a href="delete.php?id=<?php echo $book->id; ?>" onclick="return confirm('Opravdu chcete smazat?')" class="btn btn-danger btn-sm">odstranit</a>
+              <a href="delete.php?id=<?php echo $book->id; ?>" onclick="return confirm('Opravdu chcete smazat?')" class="btn btn-sm">odstranit</a>
             </td>
           </tr>
         <?php endforeach ?>
