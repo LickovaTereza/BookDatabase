@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $book = new Book($book_name, $first_name, $second_name, $description, $ISBN, $book_picture); // vkládámne, takže nemusíme dávat ID
 
   $repo->createBook($book);
-  header("Location: index.php");
+  header("Location: bookList.php");
   exit();
 }
 ?>
